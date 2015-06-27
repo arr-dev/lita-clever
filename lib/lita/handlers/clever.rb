@@ -4,7 +4,7 @@ require 'clever-api'
 module Lita
   module Handlers
     class Clever < Handler
-      route(%r{^([\w .-_]+)$}i, :clever, command: true, exclusive: true, help: {
+      route(%r{^([\w .-_]+)$}i, :clever, command: true, help: {
         'clever' => 'Initializes clever.'
       })
 
