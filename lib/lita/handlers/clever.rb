@@ -4,16 +4,17 @@ require 'clever-api'
 module Lita
   module Handlers
     class Clever < Handler
-      route(%r{^([\w .-_]+)$}i, :clever, command: true, help: {
-        'clever' => 'Initializes clever.'
-      })
+      on :unhandled_message, :clever
 
-      def self.default_config(handler_config)
-      end
+      def clever(payload)
+        msg = payload[:message]
+        if msg && msg.body && !msg.body.empty?
+          bot = CleverBot.new
+          source = payload[:message].source
 
-      def clever(response)
-        bot = CleverBot.new
-        response.reply bot.think response.matches[0][0]
+          response = bot.think payload[:message].body
+          robot.send_message(source, response)
+        end
       end
     end
 
