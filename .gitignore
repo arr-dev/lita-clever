@@ -1,3 +1,11 @@
 *.gem
 .ruby-version
 .ruby-gemset
+Gemfile.lock
+
+# Ignore all logfiles and tempfiles.
+/log/*
+!/log/.keep
+/tmp
+.DS_Store
+/public/system/*

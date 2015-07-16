@@ -8,7 +8,7 @@ module Lita
 
       def clever(payload)
         msg = payload[:message]
-        if msg && msg.body && !msg.body.empty?
+        if msg && msg.body && !msg.body.empty? && msg.command?
           bot = CleverBot.new
           source = payload[:message].source
 
